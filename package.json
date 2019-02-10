@@ -1,0 +1,21 @@
+{
+  "name": "zeromq-relay",
+  "version": "1.0.0",
+  "description": "Relay to send Redis updates to a message broker via ZeroMQ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Samuli Vuorinen",
+  "license": "MIT",
+  "dependencies": {
+    "redis": "^2.8.0",
+    "zeromq": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
