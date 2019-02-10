@@ -1,5 +1,5 @@
 {
-  "name": "zeromq-relay",
+  "name": "koma-message-relay",
   "version": "1.0.0",
   "description": "Relay to send Redis updates to a message broker via ZeroMQ",
   "main": "index.js",
