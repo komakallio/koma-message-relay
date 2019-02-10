@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const redis = require('redis');
 const zmq = require('zeromq');
 const config = require('./config');
