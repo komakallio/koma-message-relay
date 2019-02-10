@@ -1,3 +1,4 @@
 module.exports = {
   BROKER_ADDRESS: 'tcp://127.0.0.1:3000',
+  TEST_MODE: false,
 };

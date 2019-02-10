@@ -24,10 +24,12 @@ redisSubscriber.subscribe('__keyevent@0__:zadd');
 redisSubscriber.on('message', messageHandler);
 
 /* Test message sender */
-const adderClient = redisSubscriber.duplicate();
-const sendMessages = () => {
-  adderClient.zadd('ptu', Date.now(), '{"data": "this is fake news"}');
-  setTimeout(sendMessages, 2000);
-};
+if (config.TEST_MODE) {
+  const testPublisher = redisSubscriber.duplicate();
+  const sendMessages = () => {
+    testPublisher.zadd('ptu', Date.now(), '{"data": "this is fake news"}');
+    setTimeout(sendMessages, 2000);
+  };
 
-setTimeout(sendMessages, 2000);
+  setTimeout(sendMessages, 2000);
+}
