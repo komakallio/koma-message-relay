@@ -1,6 +1,5 @@
 module.exports = {
   BROKER_ADDRESS: 'tcp://127.0.0.1:3000',
-  TEST_MODE: false,
   REDIS_HOST: '127.0.0.1',
   REDIS_PORT: 6379,
 };

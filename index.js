@@ -26,14 +26,3 @@ const messageHandler = (_, topic) => {
 /* Subscribe to key event notifications */
 redisSubscriber.subscribe('__keyevent@0__:zadd');
 redisSubscriber.on('message', messageHandler);
-
-/* Test message sender */
-if (config.TEST_MODE) {
-  const testPublisher = redisSubscriber.duplicate();
-  const sendMessages = () => {
-    testPublisher.zadd('fake', Date.now(), '{"data": "this is fake news"}');
-    setTimeout(sendMessages, 2000);
-  };
-
-  setTimeout(sendMessages, 2000);
-}
