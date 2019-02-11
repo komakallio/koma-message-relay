@@ -17,9 +17,8 @@ const redisClient = redisSubscriber.duplicate();
 const messageHandler = (_, topic) => {
   redisClient.zrevrange(topic, 0, 0, 'withscores', (err, response) => {
     if (err) throw err;
-    const value = response[0];
-    const message = `${topic} ${value}`;
-    pubSocket.send(message);
+    const message = response[0];
+    pubSocket.send([topic, message]);
   });
 };
 
