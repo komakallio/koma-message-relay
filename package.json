@@ -1,7 +1,7 @@
 {
   "name": "koma-message-relay",
-  "version": "1.0.0",
-  "description": "Relay to send Redis updates to a message broker via ZeroMQ",
+  "version": "2.0.0",
+  "description": "Relay to send Redis updates to a message broker via MQTT",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "redis": "^2.8.0",
-    "zeromq": "^5.1.0"
+    "mqtt": "^4.2.5"
   },
   "devDependencies": {
     "eslint": "^5.13.0",

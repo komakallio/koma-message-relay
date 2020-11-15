@@ -1,5 +1,5 @@
 const redis = require('redis');
-const zmq = require('zeromq');
+const mqtt = require('mqtt');
 const config = require('./config');
 
 /* Config Redis event subscriber */
@@ -7,9 +7,8 @@ const redisSubscriber = redis.createClient(config.REDIS_PORT, config.REDIS_HOST)
 redisSubscriber.config('set', 'notify-keyspace-events', 'Ez');
 redisSubscriber.on('error', err => console.log(`${err}`));
 
-/* Connect ZeroMQ to message broker */
-const pubSocket = zmq.socket('pub');
-pubSocket.connect(config.BROKER_ADDRESS);
+/* Connect to MQTT message server */
+const mqttClient = mqtt.connect(config.BROKER_ADDRESS);
 
 /* A Redis client cannot be in Subscribe mode and make queries
   at the same time, must make another Redis client */
@@ -18,7 +17,7 @@ const messageHandler = (_, topic) => {
   redisClient.zrevrange(topic, 0, 0, 'withscores', (err, response) => {
     if (err) throw err;
     const message = response[0];
-    pubSocket.send([topic, message]);
+    mqttClient.publish(topic, message);
   });
 };
 
