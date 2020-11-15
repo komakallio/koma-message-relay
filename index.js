@@ -7,8 +7,11 @@ const redisSubscriber = redis.createClient(config.REDIS_PORT, config.REDIS_HOST)
 redisSubscriber.config('set', 'notify-keyspace-events', 'Ez');
 redisSubscriber.on('error', err => console.log(`${err}`));
 
-/* Connect to MQTT message server */
-const mqttClient = mqtt.connect(config.BROKER_ADDRESS);
+/* Connect to MQTT message broker */
+const mqttClient = mqtt.connect(config.BROKER_ADDRESS, {
+  username: config.BROKER_USERNAME,
+  password: config.BROKER_PASSWORD,
+});
 
 /* A Redis client cannot be in Subscribe mode and make queries
   at the same time, must make another Redis client */

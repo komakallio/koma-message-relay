@@ -1,5 +1,7 @@
 module.exports = {
   BROKER_ADDRESS: 'mqtt://127.0.0.1',
+  BROKER_USERNAME: '',
+  BROKER_PASSWORD: '',
   REDIS_HOST: '127.0.0.1',
   REDIS_PORT: 6379,
 };
